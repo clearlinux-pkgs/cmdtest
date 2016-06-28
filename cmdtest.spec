@@ -4,7 +4,7 @@
 #
 Name     : cmdtest
 Version  : 0.14.orig
-Release  : 7
+Release  : 8
 URL      : http://code.liw.fi/debian/pool/main/c/cmdtest/cmdtest_0.14.orig.tar.gz
 Source0  : http://code.liw.fi/debian/pool/main/c/cmdtest/cmdtest_0.14.orig.tar.gz
 Summary  : No detailed summary available
