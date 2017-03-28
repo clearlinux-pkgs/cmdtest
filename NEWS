@@ -1,0 +1,152 @@
+NEWS for cmdtest
+================
+
+This file summarizes changes between releases of cmdtest.
+
+Version 0.14, released 2015-03-05
+---------------------------------
+
+* Yarn now supports continuation lines: start a line with `...` and it
+  continues the previous line.
+
+* Yarn now works with UTF-8 input. No other character sets are
+  supported; sorry (but patches welcome).
+
+Version 0.12, released 2014-03-28
+---------------------------------
+
+For yarn:
+
+* Do not fail a test suite if snapshotting `DATADIR` fails.
+
+Version 0.11, released 2014-03-15
+---------------------------------
+
+For yarn:
+
+* Report number of scenarios skipped due to an ASSUMING step failing.
+
+* Fix the error message for reporting scenarios without THEN steps
+  to include the names of those scenarios only, rather than all
+  scenarios. Patch by Pete Fotheringham.
+
+* Yarn now sets `$HOME` to a directory in `$DATADIR`, and creates
+  that directory. This means test suites can assume `$HOME` exists,
+  but don't use the user's real home directory, which is important for
+  test environment hygiene.
+
+* New option `--allow-missing-steps` to allow running a test suite
+  with some steps missing. The scenarios with missing steps will be
+  skipped. Suggested by Pete Fotheringham.
+
+For cmdtest:
+
+* The `--test` (`-t`) option should now work again. Thank you
+  to Kalle Valo for prodding me.
+
+Version 0.10, released 2013-10-05
+---------------------------------
+
+* Yarn now cleans the environment when it runs shell commands for the
+  implementation steps. The PATH variable is kept from the user's
+  environment, every other variable is either removed or hardcoded to
+  a specific value. More variables can be added explicitly to the test
+  environment with the new `--env NAME=VALUE` option. Additionally
+  yarn sets the `SRCDIR` environment variable to point at the root of
+  the source tree (the directory where yarn was invoked from).
+
+* A new option, `--timings`, has been added to yarn to report how long
+  each scenario and each step took.
+
+* Yarn now reports scenarios skipped because of ASSUMING failing.
+
+* Yarn manual page now documents DATADIR and SRCDIR environment
+  variables.
+
+Bug fixes:
+
+* Yarn now complains if a scenario has no THEN steps. Suggested by
+  Richard Maw.
+
+* Yarn now gives an error if there are no scenarios. Suggested by
+  Daniel Silverstone and others.
+
+* Yarn now checks for duplicate scenario names.
+
+* Yarn now always checks for IMPLEMENTS sections with case-insensitive
+  matching. Reported, with test case, by Jannis Pohlmann.
+
+Version 0.9, released 2013-07-23
+--------------------------------
+
+* Yarn now warns if an input file has no code blocks.
+* There is no a yarn `--shell-library` option for the user to use, which
+  includes a shell library when running any IMPLEMENTS section.
+* FINALLY always worked in yarn, but has now been added to the manual
+  page as well.
+* The keyword ASSUMING has been added to yarn.
+* New yarn option `--run` allows running selected tests only.
+* New yarn option `--snapshot` makes snapshots of the test working
+  directory after each step in a scenario. Combined with the, also
+  new, option `--tempdir` this makes debugging failed tests easier.
+* New yarn option `--verbose` (turned on automatically if there is not
+  tty available, e.g., when running from cron), turns off ttystatus
+  progress bar and produces a "wall of text" style output instead.
+
+Bug fixes:
+
+* Yarn now handles multiple input files correctly.  Reported by Daniel
+  Silverstone; fix based on his patch, but rewritten.
+
+Version 0.8.3, released 2013-06-21
+--------------------------------
+
+* Bug fix: properly install yarnlib. In other news, I hate distutils.
+
+Version 0.8.2, released 2013-06-21
+--------------------------------
+
+* Bug fix: install the yarnlib library as well. This is embarrassing.
+
+Version 0.8.1, released 2013-06-20
+--------------------------------
+
+* Bug fix: install the yarn binary in the package.
+
+Version 0.8, released 2013-06-19
+--------------------------------
+
+* Switch terminology to "scenario testing" from "story testing". Thanks
+  to Rob Kendrick for the suggestion. Doing a quick release so the
+  old terminology doesn't have time to get any use.
+
+Version 0.7, released 2013-06-15
+--------------------------------
+
+* Added the new tool `yarn`, for doing story testing. It is still fresh
+  and raw, but I want to make it available to get feedback.
+
+Version 0.6, released 2013-03-14
+--------------------------------
+
+* Fixed cmdtest to diff outputs correctly. Reported by Kevin Lee.
+
+Version 0.5, released 2012-09-29
+--------------------------------
+
+* Version 0.4 may or may not have released. If it was, it should have had
+  internal changes only.
+* Add missing copy of GPLv3. Reported by Michel Alexandre Salim.
+
+Version 0.3, released 2012-02-24
+--------------------------------
+
+* Add `--keep` option to keep the temporary directory for failed tests.
+* Add `--timings` option to show timings for various tests. Good for when
+  test suites start getting slow and you want to speed them up.
+
+Version 0.2, released 2012-02-18
+--------------------------------
+
+* The `-t testname` option now works.
+
